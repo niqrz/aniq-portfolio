@@ -18,6 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     type();
 
+    if (document.cookie.includes("clicked=true")) {
+        document.body.innerHTML = "Sorry, you’ve already clicked!";
+    } else {
+        document.cookie = "clicked=true; path=/; max-age=31536000"; // 1 year
+        // show page or perform action
+    }
+
     var hoverTarget = document.getElementById('hoverTarget');
     var hoverTarget2 = document.getElementById('hoverTarget2');
     var hoverTarget3 = document.getElementById('hoverTarget3');
