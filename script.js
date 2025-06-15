@@ -7,13 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
             typingText.textContent += text.charAt(i);
             i++;
             setTimeout(type, 50); // Adjust typing speed here
-        } else {
-            setTimeout(() => {
-                typingText.textContent = "";
-                i = 0;
-                type();
-            }, 1000); // Wait 1s before repeating
         }
+        // else {
+        //     setTimeout(() => {
+        //         typingText.textContent = "";
+        //         i = 0;
+        //         type();
+        //     }, 1000); // Wait 1s before repeating
+        // }
     }
     type();
 
