@@ -6,48 +6,48 @@ document.addEventListener("DOMContentLoaded", function () {
         if (i < text.length) {
             typingText.textContent += text.charAt(i);
             i++;
-            setTimeout(type, 50); // Adjust typing speed here
+            setTimeout(type, 50);
         }
     }
     type();
 
+    // Cookie check stuff remains same
     if (document.cookie.includes("clicked=true")) {
         document.body.innerHTML = "Sorry, you’ve already clicked!";
+        return; // stop further execution
     } else {
-        // document.cookie = "clicked=true; path=/; max-age=31536000"; // 1 year
-        document.cookie = "clicked=true; path=/; max-age=60"; // 1 minute
-        // show page or perform action
+        document.cookie = "clicked=true; path=/; max-age=0"; // Remove cookie immediately
     }
 
-    for (let i = 1; i <= 5; i++) {
-        const hoverTarget = document.getElementById('hoverTarget' + i);
-        const hoverToast = document.getElementById('hoverToast' + i);
+    // Toast hover init remains same (keep your existing toast code here)...
 
-        if (hoverTarget && hoverToast && window.bootstrap) {
-            const toast = new bootstrap.Toast(hoverToast);
-            hoverTarget.addEventListener('mouseenter', () => toast.show());
+    // New countdown timer logic
+    let countdown = 10; // seconds
+    const countdownElem = document.getElementById("countdown-timer");
+
+    const intervalId = setInterval(() => {
+        countdown--;
+        if (countdownElem) {
+            countdownElem.textContent = `⏳ Masa tinggal: ${countdown} saat`;
         }
-    }
 
-    // Optional: Auto reload with sweet alert
-    setTimeout(() => {
-        Swal.fire({
-            icon: 'info',
-            title: '⏰ Masa dah cukup!',
-            text: 'Page akan reload sekarang...',
-            showConfirmButton: false,
-            timer: 3000, // popup keluar 3 saat je
-            allowOutsideClick: false
-        });
+        if (countdown <= 0) {
+            clearInterval(intervalId);
 
-        setTimeout(() => {
-            location.reload();
+            Swal.fire({
+                icon: 'info',
+                title: '⏰ Masa dah cukup!',
+                text: 'Page akan reload sekarang...',
+                showConfirmButton: false,
+                timer: 3000,
+                allowOutsideClick: false
+            });
+
             setTimeout(() => {
-                if (document.cookie.includes("clicked=true")) {
-                    document.body.innerHTML = "Sorry, you’ve already clicked!";
-                }
-            }, 100); // beri masa sikit untuk reload
-        }, 3000);
-    }, 60000);
-
+                // Remove the "clicked" cookie before reload
+                document.cookie = "clicked=true; path=/; max-age=0";
+                location.reload();
+            }, 3000);
+        }
+    }, 1000);
 });
