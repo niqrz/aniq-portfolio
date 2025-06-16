@@ -19,16 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // show page or perform action
     }
 
-    for (let i = 1; i <= 5; i++) {
-        const hoverTarget = document.getElementById('hoverTarget' + i);
-        const hoverToast = document.getElementById('hoverToast' + i);
-
-        if (hoverTarget && hoverToast && window.bootstrap) {
-            const toast = new bootstrap.Toast(hoverToast);
-            hoverTarget.addEventListener('mouseenter', () => toast.show());
-        }
-    }
-
     // Optional: Auto reload with sweet alert
     setTimeout(() => {
         Swal.fire({
@@ -45,5 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 3000); // reload lepas popup 3 saat
     }, 60000); // tunggu 1 minit dulu
 
+    for (let i = 1; i <= 5; i++) {
+        const hoverTarget = document.getElementById('hoverTarget' + i);
+        const hoverToast = document.getElementById('hoverToast' + i);
+
+        if (hoverTarget && hoverToast && window.bootstrap) {
+            const toast = new bootstrap.Toast(hoverToast);
+            hoverTarget.addEventListener('mouseenter', () => toast.show());
+        }
+    }
 
 });
