@@ -42,6 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setTimeout(() => {
             location.reload();
+            setTimeout(() => {
+                if (document.cookie.includes("clicked=true")) {
+                    document.body.innerHTML = "Sorry, you’ve already clicked!";
+                }
+            }, 100); // beri masa sikit untuk reload
         }, 3000);
     }, 60000);
 
