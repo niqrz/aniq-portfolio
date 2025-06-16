@@ -16,13 +16,13 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.innerHTML = "Sorry, you’ve already clicked!";
         return; // stop further execution
     } else {
-        document.cookie = "clicked=true; path=/; max-age=0"; // Remove cookie immediately
+        document.cookie = "clicked=true; path=/; max-age=30"; // Remove cookie immediately
     }
 
     // Toast hover init remains same (keep your existing toast code here)...
 
     // New countdown timer logic
-    let countdown = 10; // seconds
+    let countdown = 30; // seconds
     const countdownElem = document.getElementById("countdown-timer");
 
     const intervalId = setInterval(() => {
