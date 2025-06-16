@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => {
                 // Remove the "clicked" cookie before reload
                 document.cookie = "clicked=true; path=/; max-age=0";
-                location.reload();
+                window.location.reload();
             }, 3000);
         }
     }, 1000);
