@@ -16,13 +16,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.innerHTML = "Sorry, you’ve already clicked!";
         return; // stop further execution
     } else {
-        document.cookie = "clicked=true; path=/; max-age=30"; // Remove cookie immediately
+        // Set cookie to expire in 1 day
+        document.cookie = "clicked=true; path=/; max-age=86400";
     }
 
     // Toast hover init remains same (keep your existing toast code here)...
 
     // New countdown timer logic
-    let countdown = 30; // seconds
+    let countdown = 10; // seconds
     const countdownElem = document.getElementById("countdown-timer");
 
     const intervalId = setInterval(() => {
@@ -44,9 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             setTimeout(() => {
-                // Remove the "clicked" cookie before reload
-                document.cookie = "clicked=true; path=/; max-age=0";
                 window.location.reload();
+                setTimeout(() => {
+                    if (document.cookie.includes("clicked=true")) {
+                        document.body.innerHTML = "Sorry, you’ve already clicked!";
+                    }
+                }, 100); // beri masa sikit untuk reload
             }, 3000);
         }
     }, 1000);
