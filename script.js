@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Toast hover init remains same (keep your existing toast code here)...
 
     // New countdown timer logic
-    let countdown = 10; // seconds
+    let countdown = 20; // seconds
     const countdownElem = document.getElementById("countdown-timer");
 
     const intervalId = setInterval(() => {
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             Swal.fire({
                 icon: 'info',
-                title: '⏰ Masa dah cukup!',
+                title: '⏰ Masa tamat!',
                 text: 'Page akan reload sekarang...',
                 showConfirmButton: false,
                 timer: 3000,
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.reload();
                 setTimeout(() => {
                     if (document.cookie.includes("clicked=true")) {
-                        document.body.innerHTML = "Sorry, you’ve already clicked!";
+                        document.body.innerHTML = "Terima Kasih kerana melayari laman web ini!";
                     }
                 }, 100); // beri masa sikit untuk reload
             }, 3000);
