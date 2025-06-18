@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Cookie check stuff remains same
     if (document.cookie.includes("clicked=true")) {
-        document.body.innerHTML = "Sorry, you’ve already clicked!";
+        document.body.innerHTML = "Terima Kasih kerana melayari laman web ini!";
         return; // stop further execution
     } else {
         // Set cookie to expire in 1 day
