@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Toast hover init remains same (keep your existing toast code here)...
 
     // New countdown timer logic
-    let countdown = 20; // seconds
+    let countdown = 30; // seconds
     const countdownElem = document.getElementById("countdown-timer");
 
     const intervalId = setInterval(() => {
