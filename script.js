@@ -11,14 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     type();
 
-    // Cookie check stuff remains same
-    if (document.cookie.includes("clicked=true")) {
-        document.body.innerHTML = "Terima Kasih kerana melayari laman web ini!";
-        return; // stop further execution
-    } else {
-        // Set cookie to expire in 1 day
-        document.cookie = "clicked=true; path=/; max-age=86400";
-    }
+    // // Cookie check stuff remains same
+    // if (document.cookie.includes("clicked=true")) {
+    //     document.body.innerHTML = "Terima Kasih kerana melayari laman web ini!";
+    //     return; // stop further execution
+    // } else {
+    //     // Set cookie to expire in 1 day
+    //     document.cookie = "clicked=true; path=/; max-age=86400";
+    // }
 
     // Toast hover init remains same (keep your existing toast code here)...
     for (let i = 1; i <= 5; i++) {
