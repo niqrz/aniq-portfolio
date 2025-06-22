@@ -21,37 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Toast hover init remains same (keep your existing toast code here)...
+    for (let i = 1; i <= 5; i++) {
+        const hoverTarget = document.getElementById('hoverTarget' + i);
+        const hoverToast = document.getElementById('hoverToast' + i);
 
-    // New countdown timer logic
-    let countdown = 30; // seconds
-    const countdownElem = document.getElementById("countdown-timer");
-
-    const intervalId = setInterval(() => {
-        countdown--;
-        if (countdownElem) {
-            countdownElem.textContent = `⏳ Masa tinggal: ${countdown} saat`;
+        if (hoverTarget && hoverToast && window.bootstrap) {
+            const toast = new bootstrap.Toast(hoverToast);
+            hoverTarget.addEventListener('mouseenter', () => toast.show());
         }
-
-        if (countdown <= 0) {
-            clearInterval(intervalId);
-
-            Swal.fire({
-                icon: 'info',
-                title: '⏰ Masa tamat!',
-                text: 'Page akan reload sekarang...',
-                showConfirmButton: false,
-                timer: 3000,
-                allowOutsideClick: false
-            });
-
-            setTimeout(() => {
-                window.location.reload();
-                setTimeout(() => {
-                    if (document.cookie.includes("clicked=true")) {
-                        document.body.innerHTML = "Terima Kasih kerana melayari laman web ini!";
-                    }
-                }, 100); // beri masa sikit untuk reload
-            }, 3000);
-        }
-    }, 1000);
+    }
 });
